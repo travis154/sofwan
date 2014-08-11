@@ -9,7 +9,8 @@ $(function(){
 		var self = $(this);
 		var index = self.attr("data-index");
 		$("#carousel").carousel(parseInt(index));
-		self.parent().siblings().removeClass("active");
+		$('.carousel-mover').removeClass("active");
+		console.log(self);
 		self.addClass("active");
 	});
 });
