@@ -1,0 +1,57 @@
+extends layout
+
+block content
+	hr
+	section.row
+		section.col-md-12
+			div#carousel.carousel.slide(data-ride="carousel")
+				div.carousel-inner#content
+					-each article,k in news
+						div.item(class=(k==0 ? "active" : ""), id=article._id)
+							div.row
+								div.col-md-5(style='height:400px; background:#00989e')
+									section(style='padding:10px')
+										h1(style='color:white; font-weight: bolder;')=article.name
+										br
+										h4(style='color:white; font-weight: bolder;')=article.description
+										div
+											a(href='/news/' + article._id, style='color:#fff') Read more
+								div.col-md-7(style='height:400px;padding-left:0;background:url(/files/'+article.image+') no-repeat;background-size: cover;')
+									//img(src="/files/" + article.image).img-responsive
+
+				a.left.carousel-control(href="#carousel", data-slide="prev").hide
+					span.glyphicon.glyphicon-chevron-left
+				a.right.carousel-control(href="#carousel", data-slide="next").hide
+					span.glyphicon.glyphicon-chevron-right	
+			br
+	-each article,k in news
+		section.col-md-3
+			section.row.carousel-mover(id="subitem_" + article._id, class=(k==0 ? "active" : ""), data-index=k, style='background:url(/files/'+article.image+') no-repeat;background-size: cover;')
+				h4=article.name
+	section
+		section.row
+			section.col-md-4
+				h3 Latest Album
+				-each item in gallery
+					a(href='/gallery/' + item._id)
+						h4 #{item.name} (#{item.images.length} images)
+						-var fimg = item.images[0];
+						section(style='height: 170px;background:url(/files/medium'+fimg+') no-repeat;background-size: cover;')
+						//img(src='/files/medium' + fimg);
+			section.col-md-4
+				h3 New Archive
+				ul
+					li
+						h4: a(href='') Some news 1
+					li
+						h4: a(href='') Some news 1
+					li
+						h4: a(href='') Some news 1
+					li
+						h4: a(href='') Some news 1
+					li
+						h4: a(href='') Some news 1
+			section.col-md-4
+				iframe(src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;width&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false&amp;appId=364847430262752", scrolling="no", frameborder="0", style="border:none; overflow:hidden; height:290px;width:100%", allowTransparency="true")
+
+						
