@@ -38,19 +38,15 @@ block content
 						-var fimg = item.images[0];
 						section(style='height: 170px;background:url(/files/medium'+fimg+') no-repeat;background-size: cover;')
 						//img(src='/files/medium' + fimg);
-			section.col-md-4
-				h3 New Archive
-				ul
-					li
-						h4: a(href='') Some news 1
-					li
-						h4: a(href='') Some news 1
-					li
-						h4: a(href='') Some news 1
-					li
-						h4: a(href='') Some news 1
-					li
-						h4: a(href='') Some news 1
+			section.col-md-4(style='background: #f0f0f0')
+				h3 Top News
+				-if(top_news)
+					h5=top_news.name
+					img(src='/files/' + top_news.image).img-responsive
+					p
+						| #{top_news.description}
+						span &nbsp;
+						a(href='/news/' + top_news._id) Read more
 			section.col-md-4
 				iframe(src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;width&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false&amp;appId=364847430262752", scrolling="no", frameborder="0", style="border:none; overflow:hidden; height:290px;width:100%", allowTransparency="true")
 

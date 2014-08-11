@@ -227,6 +227,13 @@ app.get('/', function(req, res){
 				.sort({_id:-1})
 				.lean()
 				.exec(fn);	
+			},
+			top_news:function(fn){
+				cms.website_news
+				.findOne()
+				.sort({views:-1})
+				.lean()
+				.exec(fn)
 			}
 		},function(err, page){
 			res.render('index',page);
@@ -241,6 +248,7 @@ app.get('/news', function(req, res){
 	.exec(function(err, data){
 		res.render('news',{affix:data});
 	});
+
 
 });
 app.get('/gallery', function(req, res){
@@ -280,7 +288,9 @@ app.get('/news/:id', function(req, res){
 	},function(err, page){
 		res.render('news-item', page);
 	})
-
+	cms
+	.website_news
+	.update({_id:req.params.id},{$inc:{views:1}},function(err,d){});
 });
 app.get('/gallery/:id', function(req, res){
 	async.auto({
