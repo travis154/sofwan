@@ -16,7 +16,7 @@ block content
 						ul.nav.nav-pills
 							-each item in archive[i]
 								li
-									a(href='/news/' + item._id)=item.name
+									a(href='/gallery/' + item._id)=item.name
 		section.col-md-6
 			div(id=item._id).affix-item
 				h2=item.name
@@ -39,5 +39,5 @@ block content
 					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=312876022197325&version=v2.0";
 					fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));
-				div.fb-comments(data-numposts="5", data-colorscheme="light", data-href="http://www.myol.mv/news/" + item._id)
+				div.fb-comments(data-numposts="5", data-colorscheme="light", data-href="http://www.maldivianinsider.com/gallery/" + item._id)
 		include components/rightside
