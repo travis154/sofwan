@@ -11,14 +11,13 @@ block content
 						li(class=(k==0?"active":""))
 							a(href="#" + item._id)=item.name
 		section.col-md-6
-			-each item in affix
-				div(id=item._id).affix-item
-					h2
-						a(href='/gallery/' + item._id)=item.name
-					p
-						-var date = new Date(parseInt(item._id.toString().slice(0,8), 16)*1000);
-						small=date
-					-if(item.image)
-						img.img-rounded.img-responsive(src="/files/" + item.image)
-					p!=item.article
+			section.row
+				section.col-md-6
+					-each item in affix
+						div(id=item._id).affix-item
+							a(href='/gallery/' + item._id)
+								img(src='/files/' + item.images[0]).img-responsive
+								h4=item.name
+								p
+									-var date = new Date(parseInt(item._id.toString().slice(0,8), 16)*1000);
 		include components/rightside
