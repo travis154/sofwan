@@ -12,9 +12,9 @@ block content
 							a(href="#" + item._id)=item.name
 		section.col-md-6
 			section.row
-				section.col-md-6
-					-each item in affix
-						div(id=item._id).affix-item
+				-each item in affix
+					section.col-md-6
+						div(id=item._id)
 							a(href='/gallery/' + item._id)
 								img(src='/files/' + item.images[0]).img-responsive
 								h4=item.name
